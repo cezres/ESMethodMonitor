@@ -13,9 +13,12 @@
 #include "ESMethodMonitorUtils.h"
 
 typedef int (*ESMethodMonitorIgnore)(ESMethodInvocation *invocation);
-typedef int (*ESMethodMonitorRecord)(ESMethodInvocation *invocation);
+typedef void (*ESMethodMonitorRecord)(ESMethodInvocation *invocation);
 
 void ESMethodMonitorStart(void);
 void ESMethdMonitorStop(void);
+void ESMethodMonitorSetIgnoreHandler(ESMethodMonitorIgnore ignore);
+void ESMethodMonitorSetRecordHandler(ESMethodMonitorRecord record);
+void ESMethodMonitorSetMinTimeCost(unsigned long minTimeCost);  /// us
 
 #endif /* ESMethodMonitorCore_h */

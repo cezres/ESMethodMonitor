@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ESMethodInvocation.h"
+//#import "ESMethodInvocation.h"
 
 //! Project version number for ESMethodMonitor.
 FOUNDATION_EXPORT double ESMethodMonitorVersionNumber;
@@ -19,6 +19,12 @@ FOUNDATION_EXPORT const unsigned char ESMethodMonitorVersionString[];
 
 @interface ESMethodMonitor : NSObject
 
+/// ms
+@property (nonatomic, assign) double minTimeCost;
 
++ (instancetype)shareInstance;
+
+- (void)start;
+- (void)stop;
 
 @end

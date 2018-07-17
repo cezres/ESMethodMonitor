@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ESMethodMonitorCore.h"
+#import "ESMethodMonitor.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +20,7 @@
     // Override point for customization after application launch.
     
     
-    ESMethodMonitorStart();
+    [[ESMethodMonitor shareInstance] start];
     
     return YES;
 }

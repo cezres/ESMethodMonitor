@@ -27,7 +27,7 @@
 
 static inline uint64_t currentTime(void);
 
-static unsigned int _min_time_cost = 1000;  /// ms
+static unsigned long _min_time_cost = 1000;  /// ms
 static bool _enableMethodMonitor = false;
 static pthread_key_t _thread_key;
 __unused static id (*orig_objc_msgSend)(id, SEL, ...);
@@ -64,6 +64,7 @@ void before_objc_msgSend(id self, SEL _cmd, uintptr_t lr) {
         stack->index++;
         invocation->depth = stack->index;
         if (_enableMethodMonitor) {
+            invocation->cls = object_getClass(self);
             invocation->time = currentTime();
             invocation->uuid = malloc(sizeof(char) * 40);
             srand((unsigned)invocation->time);
@@ -79,20 +80,18 @@ uintptr_t after_objc_msgSend() {
     if (_enableMethodMonitor) {
         invocation->time = currentTime() - invocation->time;
         if (invocation->time > _min_time_cost) {
-            Class cls = object_getClass(invocation->object);
-            if (class_isMetaClass(cls)) {
+            if (class_isMetaClass(invocation->cls)) {
                 invocation->isClassMethod = true;
                 invocation->className = object_getClassName(invocation->object);
             }
             else {
                 invocation->isClassMethod = false;
-                invocation->className = object_getClassName((id)cls);
+                invocation->className = object_getClassName((id)invocation->cls);
             }
             invocation->cmdName = sel_getName(invocation->cmd);
-            
-            printf("[%s %s]\t%.2lfms\n", invocation->className, invocation->cmdName, invocation->time / 1000.0);
-            if (_recordHandler) {
-                _recordHandler(invocation);
+            if (!_ignoreHandler || _ignoreHandler(invocation) == 0) {
+//                printf("[%s %s]\t%.2lfms\n", invocation->className, invocation->cmdName, invocation->time / 1000.0);
+                !_recordHandler ?: _recordHandler(invocation);
             }
         }
     }
@@ -194,7 +193,9 @@ void ESMethodMonitorSetRecordHandler(ESMethodMonitorRecord record) {
     _recordHandler = record;
 }
 
-
+void ESMethodMonitorSetMinTimeCost(unsigned long minTimeCost) {
+    _min_time_cost = minTimeCost;
+}
 
 #pragma mark ----
 

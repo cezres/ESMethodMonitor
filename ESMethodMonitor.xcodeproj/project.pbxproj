@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E99E19820FDE35100D83473 /* ESMethodInvocationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E99E19620FDE35100D83473 /* ESMethodInvocationEntity.h */; };
+		6E99E19920FDE35100D83473 /* ESMethodInvocationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E99E19720FDE35100D83473 /* ESMethodInvocationEntity.m */; };
 		6E9CA23B20F8A37300D21841 /* ESMethodMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9E4FEE20F73195008890A8 /* ESMethodMonitor.framework */; };
 		6E9CA23E20F8A5DD00D21841 /* ESMethodMonitorCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9CA23C20F8A5DD00D21841 /* ESMethodMonitorCore.h */; };
 		6E9CA23F20F8A5DD00D21841 /* ESMethodMonitorCore.c in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CA23D20F8A5DD00D21841 /* ESMethodMonitorCore.c */; };
@@ -18,8 +20,6 @@
 		6E9E500C20F731B3008890A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E9E500A20F731B3008890A8 /* LaunchScreen.storyboard */; };
 		6E9E500F20F731B3008890A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9E500E20F731B3008890A8 /* main.m */; };
 		6E9E501820F733C3008890A8 /* ESMethodMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9E501720F733C3008890A8 /* ESMethodMonitor.m */; };
-		6E9E501F20F7518D008890A8 /* ESMethodInvocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9E501D20F7518D008890A8 /* ESMethodInvocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6E9E502020F7518D008890A8 /* ESMethodInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9E501E20F7518D008890A8 /* ESMethodInvocation.m */; };
 		6EA7EF3520FC3EF300C4EC7D /* ESMethodMonitorUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EA7EF3320FC3EF300C4EC7D /* ESMethodMonitorUtils.h */; };
 		6EA7EF3620FC3EF300C4EC7D /* ESMethodMonitorUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 6EA7EF3420FC3EF300C4EC7D /* ESMethodMonitorUtils.c */; };
 		AF26482F460C0FC83C96C6F0 /* libPods-ESMethodMonitor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC78DEFE621C51E97B3FC1D /* libPods-ESMethodMonitor.a */; };
@@ -28,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		25E998EE5829E3DA5D0908E8 /* Pods-MethodMonitorExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MethodMonitorExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-MethodMonitorExample/Pods-MethodMonitorExample.release.xcconfig"; sourceTree = "<group>"; };
+		6E99E19620FDE35100D83473 /* ESMethodInvocationEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESMethodInvocationEntity.h; sourceTree = "<group>"; };
+		6E99E19720FDE35100D83473 /* ESMethodInvocationEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESMethodInvocationEntity.m; sourceTree = "<group>"; };
 		6E9CA23C20F8A5DD00D21841 /* ESMethodMonitorCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESMethodMonitorCore.h; sourceTree = "<group>"; };
 		6E9CA23D20F8A5DD00D21841 /* ESMethodMonitorCore.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ESMethodMonitorCore.c; sourceTree = "<group>"; };
 		6E9E4FEE20F73195008890A8 /* ESMethodMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESMethodMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,8 +46,6 @@
 		6E9E500D20F731B3008890A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E9E500E20F731B3008890A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6E9E501720F733C3008890A8 /* ESMethodMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESMethodMonitor.m; sourceTree = "<group>"; };
-		6E9E501D20F7518D008890A8 /* ESMethodInvocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESMethodInvocation.h; sourceTree = "<group>"; };
-		6E9E501E20F7518D008890A8 /* ESMethodInvocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESMethodInvocation.m; sourceTree = "<group>"; };
 		6EA7EF3320FC3EF300C4EC7D /* ESMethodMonitorUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESMethodMonitorUtils.h; sourceTree = "<group>"; };
 		6EA7EF3420FC3EF300C4EC7D /* ESMethodMonitorUtils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ESMethodMonitorUtils.c; sourceTree = "<group>"; };
 		84C0F2E0688BD0040291C8EF /* Pods-MethodMonitorExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MethodMonitorExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MethodMonitorExample/Pods-MethodMonitorExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -101,8 +101,8 @@
 			children = (
 				6E9E4FF120F73195008890A8 /* ESMethodMonitor.h */,
 				6E9E501720F733C3008890A8 /* ESMethodMonitor.m */,
-				6E9E501D20F7518D008890A8 /* ESMethodInvocation.h */,
-				6E9E501E20F7518D008890A8 /* ESMethodInvocation.m */,
+				6E99E19620FDE35100D83473 /* ESMethodInvocationEntity.h */,
+				6E99E19720FDE35100D83473 /* ESMethodInvocationEntity.m */,
 				6E9CA23C20F8A5DD00D21841 /* ESMethodMonitorCore.h */,
 				6E9CA23D20F8A5DD00D21841 /* ESMethodMonitorCore.c */,
 				6EA7EF3320FC3EF300C4EC7D /* ESMethodMonitorUtils.h */,
@@ -155,8 +155,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E99E19820FDE35100D83473 /* ESMethodInvocationEntity.h in Headers */,
 				6E9E4FF320F73195008890A8 /* ESMethodMonitor.h in Headers */,
-				6E9E501F20F7518D008890A8 /* ESMethodInvocation.h in Headers */,
 				6E9CA23E20F8A5DD00D21841 /* ESMethodMonitorCore.h in Headers */,
 				6EA7EF3520FC3EF300C4EC7D /* ESMethodMonitorUtils.h in Headers */,
 			);
@@ -302,8 +302,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E9E502020F7518D008890A8 /* ESMethodInvocation.m in Sources */,
 				6EA7EF3620FC3EF300C4EC7D /* ESMethodMonitorUtils.c in Sources */,
+				6E99E19920FDE35100D83473 /* ESMethodInvocationEntity.m in Sources */,
 				6E9CA23F20F8A5DD00D21841 /* ESMethodMonitorCore.c in Sources */,
 				6E9E501820F733C3008890A8 /* ESMethodMonitor.m in Sources */,
 			);
@@ -470,7 +470,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ESMethodMonitor/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cezres.ESMethodMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -492,7 +496,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ESMethodMonitor/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cezres.ESMethodMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -509,7 +517,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E8Y69BKJ78;
 				INFOPLIST_FILE = MethodMonitorExample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cezres.MethodMonitorExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -524,7 +535,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E8Y69BKJ78;
 				INFOPLIST_FILE = MethodMonitorExample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cezres.MethodMonitorExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

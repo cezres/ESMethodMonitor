@@ -21,10 +21,7 @@ struct ViewController {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    
     [self setupUI];
-    
 }
 
 
@@ -34,7 +31,7 @@ struct ViewController {
     button.layer.borderColor = [UIColor redColor].CGColor;
     button.layer.borderWidth = 1;
     button.frame = CGRectMake(100, 100, 80, 40);
-    button.center = self.view.center;
+//    button.center = self.view.center;
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 }

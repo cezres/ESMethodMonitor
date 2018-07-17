@@ -13,6 +13,7 @@
 #include <objc/runtime.h>
 #include <objc/message.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <time.h>
 
@@ -20,19 +21,20 @@ struct ESMethodInvocation {
     const char *className;
     const char *cmdName;
     bool isClassMethod;
-    
-    ///
-    void *object;
-    SEL cmd;
-    uintptr_t lr;
     uint64_t time;  // us
-    
-    char *uuid;
-    
-    ///
     uint depth;
     
+    char *uuid;
     struct ESMethodInvocation *top;
+    char *topUUid;
+    
+    struct ESMethodInvocation **childs;  /// 子级指针数组
+    unsigned int child_count;   ///
+    
+    void *object;
+    Class cls;
+    SEL cmd;
+    uintptr_t lr;
 };
 typedef struct ESMethodInvocation ESMethodInvocation;
 
@@ -43,6 +45,27 @@ struct ESMethodInvocationStack {
 };
 typedef struct ESMethodInvocationStack ESMethodInvocationStack;
 
+
+static inline ESMethodInvocation * ESMethodInvocationInit() {
+    ESMethodInvocation *invocation = malloc(sizeof(ESMethodInvocation));
+    invocation->className = NULL;
+    invocation->cmdName = NULL;
+    invocation->isClassMethod = false;
+    invocation->time = 0;
+    invocation->depth = 0;
+    
+    invocation->uuid = NULL;
+    invocation->top = NULL;
+    invocation->topUUid = NULL;
+    
+    invocation->childs = NULL;
+    invocation->child_count = 0;
+    
+    invocation->object = NULL;
+    invocation->cmd = NULL;
+    invocation->lr = 0;
+    return invocation;
+}
 
 static inline ESMethodInvocation * ESMethodInvocationCreate(void *object, SEL cmd, uintptr_t lr) {
     ESMethodInvocation *invocation = malloc(sizeof(ESMethodInvocation));
@@ -62,6 +85,17 @@ static inline uintptr_t ESMethodInvocationRelease(ESMethodInvocation *invocation
     return lr;
 }
 
+static inline ESMethodInvocation * ESMethodInvocationCopy(ESMethodInvocation *invocation) {
+    ESMethodInvocation *newInvocation = malloc(sizeof(ESMethodInvocation));
+    newInvocation->className = invocation->className;
+    newInvocation->cmdName = invocation->cmdName;
+    newInvocation->isClassMethod = invocation->isClassMethod;
+    newInvocation->time = invocation->time;
+    newInvocation->uuid = malloc(sizeof(char) * strlen(invocation->uuid));
+    strcpy(newInvocation->uuid, invocation->uuid);
+    newInvocation->depth = invocation->depth;
+    return newInvocation;
+}
 
 
 #endif /* ESMethodMonitorUtils_h */
