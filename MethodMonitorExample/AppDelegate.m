@@ -10,6 +10,7 @@
 #import "ESMethodMonitor.h"
 
 @interface AppDelegate ()
+<ESMethodMonitorDelegate>
 
 @end
 
@@ -19,10 +20,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
+    [ESMethodMonitor shareInstance].delegate = self;
+    [ESMethodMonitor shareInstance].minTimeCost = 0;
     [[ESMethodMonitor shareInstance] start];
     
+    
+    
+    
     return YES;
+}
+
+- (void)methodMonitor:(ESMethodMonitor *)methodMonitor recordMethodInvocation:(ESMethodInvocationEntity *)invocation {
+    NSLog(@"\n%@", invocation.stack);
 }
 
 

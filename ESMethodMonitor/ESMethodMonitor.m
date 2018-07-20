@@ -33,7 +33,10 @@ static inline int methodMonitorIgnore(ESMethodInvocation *invocation) {
     if (len < 2) {
         return 0;
     }
-    if (invocation->className[0] == 'O' && invocation->className[1] == 'S') {
+    else if (strcmp(invocation->className, "ESMethodMonitor") == 0) {
+        return 1;
+    }
+    else if (invocation->className[0] == 'O' && invocation->className[1] == 'S') {
         return 1;
     }
     return 0;
@@ -112,16 +115,36 @@ static inline void methodMonitorRecord(ESMethodInvocation *invocation) {
         invocation->childs = NULL;
     }
     
-    if (invocation->depth == 0) {
+    if (invocation->depth == 0 && [_delegate respondsToSelector:@selector(methodMonitor:recordInvocation:)]) {
         /// 记录
+        ESMethodInvocationEntity *entity = [ESMethodInvocationEntity new];
+        entity.className = [NSString stringWithUTF8String:invocation->className];
+        entity.cmdName = [NSString stringWithUTF8String:invocation->cmdName];
+        entity.time = invocation->time / 1000.0;
+        
         NSMutableString *desc = [NSMutableString string];
-        [self descriptionMethodCall:invocation fromString:desc];
-        NSLog(@"\n%@", desc);
+        [self descriptionMethodCall:invocation toString:desc];
+        entity.stack = [desc copy];
+        
+        [_delegate methodMonitor:self recordInvocation:entity];
     }
     
 }
 
-- (void)descriptionMethodCall:(ESMethodInvocation *)invocation fromString:(NSMutableString *)string {
+
+#pragma mark - Ignore
+
+- (void)addIgnoreQueue:(dispatch_queue_t)queue {
+    dispatch_queue_set_specific(_queue, &_kQueueSpecific, (void *)_queueSpecificValue, (dispatch_function_t)CFRelease);
+}
+
+- (void)removeIgnoreQueue:(dispatch_queue_t)queue {
+    dispatch_queue_set_specific(_queue, &_kQueueSpecific, NULL, (dispatch_function_t)CFRelease);
+}
+
+#pragma mark - Utils
+
+- (void)descriptionMethodCall:(ESMethodInvocation *)invocation toString:(NSMutableString *)string {
     /// self
     [string appendString:@">"];
     for (int d=0; d<invocation->depth; d++) {
@@ -136,15 +159,14 @@ static inline void methodMonitorRecord(ESMethodInvocation *invocation) {
     [string appendFormat:@"[%s %s]\t%.2lfms\n", invocation->className, invocation->cmdName, invocation->time / 1000.0];
     /// childs
     for (int i=0; i<invocation->child_count; i++) {
-        [self descriptionMethodCall:invocation->childs[i] fromString:string];
+        [self descriptionMethodCall:invocation->childs[i] toString:string];
     }
     free(invocation->uuid);
     free(invocation->childs);
     free(invocation);
 }
 
-
-#pragma mark -
+#pragma mark - Accessor
 
 - (void)setMinTimeCost:(double)minTimeCost {
     _minTimeCost = minTimeCost;

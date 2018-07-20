@@ -10,4 +10,9 @@
 
 @interface ESMethodInvocationEntity : NSObject
 
+@property (nonatomic, strong) NSString *className;
+@property (nonatomic, strong) NSString *cmdName;
+@property (nonatomic, assign) NSTimeInterval time;  // ms
+@property (nonatomic, strong) NSString *stack;
+
 @end

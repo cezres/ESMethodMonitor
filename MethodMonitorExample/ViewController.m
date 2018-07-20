@@ -24,7 +24,6 @@ struct ViewController {
     [self setupUI];
 }
 
-
 - (void)setupUI {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:@"Button" forState:UIControlStateNormal];

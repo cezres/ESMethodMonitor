@@ -68,7 +68,7 @@ static inline ESMethodInvocation * ESMethodInvocationInit() {
 }
 
 static inline ESMethodInvocation * ESMethodInvocationCreate(void *object, SEL cmd, uintptr_t lr) {
-    ESMethodInvocation *invocation = malloc(sizeof(ESMethodInvocation));
+    ESMethodInvocation *invocation = ESMethodInvocationInit();
     invocation->object = object;
     invocation->cmd = cmd;
     invocation->lr = lr;
@@ -81,12 +81,15 @@ static inline uintptr_t ESMethodInvocationRelease(ESMethodInvocation *invocation
     if (invocation->uuid) {
         free(invocation->uuid);
     }
+    if (invocation->childs) {
+        free(invocation->childs);
+    }
     free(invocation);
     return lr;
 }
 
 static inline ESMethodInvocation * ESMethodInvocationCopy(ESMethodInvocation *invocation) {
-    ESMethodInvocation *newInvocation = malloc(sizeof(ESMethodInvocation));
+    ESMethodInvocation *newInvocation = ESMethodInvocationInit();
     newInvocation->className = invocation->className;
     newInvocation->cmdName = invocation->cmdName;
     newInvocation->isClassMethod = invocation->isClassMethod;

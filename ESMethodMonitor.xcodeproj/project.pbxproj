@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E99E19820FDE35100D83473 /* ESMethodInvocationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E99E19620FDE35100D83473 /* ESMethodInvocationEntity.h */; };
+		6E99E19820FDE35100D83473 /* ESMethodInvocationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E99E19620FDE35100D83473 /* ESMethodInvocationEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E99E19920FDE35100D83473 /* ESMethodInvocationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E99E19720FDE35100D83473 /* ESMethodInvocationEntity.m */; };
 		6E9CA23B20F8A37300D21841 /* ESMethodMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9E4FEE20F73195008890A8 /* ESMethodMonitor.framework */; };
 		6E9CA23E20F8A5DD00D21841 /* ESMethodMonitorCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9CA23C20F8A5DD00D21841 /* ESMethodMonitorCore.h */; };
