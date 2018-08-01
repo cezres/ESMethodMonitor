@@ -29,12 +29,13 @@ static inline int methodMonitorIgnore(ESMethodInvocation *invocation) {
         /// 忽略的线程
         return 1;
     }
+    if (strcmp(invocation->className, "ESMethodMonitor") == 0) {
+        return 1;
+    }
+    
     unsigned long len = strlen(invocation->className);
     if (len < 2) {
         return 0;
-    }
-    else if (strcmp(invocation->className, "ESMethodMonitor") == 0) {
-        return 1;
     }
     else if (invocation->className[0] == 'O' && invocation->className[1] == 'S') {
         return 1;
@@ -89,6 +90,10 @@ static inline void methodMonitorRecord(ESMethodInvocation *invocation) {
 }
 
 - (void)recored:(ESMethodInvocation *)invocation {
+    if (_enbaleDebug) {
+        printf("[%s %s] %.2lfms\n", invocation->className, invocation->cmdName, invocation->time / 1000.0);
+    }
+    
     NSString *uuid = [NSString stringWithUTF8String:invocation->uuid];
     NSString *topUuid = nil;
     if (invocation->depth > 0) {

@@ -90,7 +90,6 @@ uintptr_t after_objc_msgSend() {
             }
             invocation->cmdName = sel_getName(invocation->cmd);
             if (!_ignoreHandler || _ignoreHandler(invocation) == 0) {
-//                printf("[%s %s]\t%.2lfms\n", invocation->className, invocation->cmdName, invocation->time / 1000.0);
                 !_recordHandler ?: _recordHandler(invocation);
             }
         }

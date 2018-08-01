@@ -36,6 +36,8 @@ FOUNDATION_EXPORT const unsigned char ESMethodMonitorVersionString[];
 
 @property (nonatomic, weak) id<ESMethodMonitorDelegate> delegate;
 
+@property (nonatomic, assign) BOOL enbaleDebug;
+
 + (instancetype)shareInstance;
 
 - (void)start;
